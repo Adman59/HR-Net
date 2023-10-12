@@ -1,9 +1,10 @@
+import './header.css'
 
 const Header = () => {
     return (
-        <div>
-            <h1>Header for React + Vite</h1>
-        </div>
+        <header>
+            <h1>HR net</h1>
+        </header>
     );
 };
 
