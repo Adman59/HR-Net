@@ -8,12 +8,13 @@ import Footer from './layout/Footer'
 
 
 const router = createBrowserRouter(routes)
+console.log(routes);
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Header />
-      <RouterProvider router={router} />
+      <RouterProvider router={router}/>
     <Footer />
   </React.StrictMode>,
 )
