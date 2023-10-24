@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { states } from '@/data/states'
 import { departements } from '@/data/departements'
 import { Modal } from 'adman-modal';
+import { useDispatch } from "react-redux";
 
 import { useForm, Controller } from 'react-hook-form';
 import * as yup from 'yup';
@@ -17,6 +18,8 @@ const DEPARTEMENTS = [...new Set(departements.map((departement) => { return { va
 
 
 const Form = () => {
+
+    const dispatch = useDispatch();
 
     const schema = yup.object().shape({
         firstname: yup.string().required("Please enter the employee firstname").min(2).max(30),
@@ -48,7 +51,7 @@ const Form = () => {
         setModalIsActive(false);
     };
 
-    const { register, handleSubmit, control, formState: {errors} } = useForm({
+    const { register, handleSubmit, control, reset, formState: {errors} } = useForm({
         resolver: yupResolver(schema)
     });
 
@@ -57,6 +60,9 @@ const Form = () => {
         console.log(data);
         data.state = selectedState;
         data.department = selectedDepartment;
+        setModalIsActive(true);
+        reset({ firstname: "", lastname: "", birthdate: "", startdate: "", department: "Sales", street: "", city: "", state: "Alabama", zipcode: "" });
+        dispatch({ type: 'employees/addEmployee', payload: data });
     }
 
     return (
