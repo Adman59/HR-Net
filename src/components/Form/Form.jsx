@@ -56,8 +56,8 @@ const Form = () => {
     const onSubmit = (data) => {
         data.state = selectedState;
         data.department = selectedDepartment;
-        data.startdate = new Date(data.startdate).toLocaleDateString("fr");
-        data.birthdate = new Date(data.birthdate).toLocaleDateString("fr");
+        data.startdate = new Date(data.startdate).toLocaleDateString('zh-Hans-CN');
+        data.birthdate = new Date(data.birthdate).toLocaleDateString('zh-Hans-CN');
         console.log(data);
         setModalIsActive(true);
         reset({ firstname: "", lastname: "", birthdate: "", startdate: "", department: "Sales", street: "", city: "", state: "Alabama", zipcode: "" });

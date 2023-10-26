@@ -17,9 +17,19 @@ const Table = () => {
     }
     const term = searchTerm.toLowerCase();
     return employees.filter((employee) => {
-      const employeeData = Object.values(employee).map((value) =>
-        typeof value === 'string' ? value.toLowerCase() : ''
-      );
+      // Convertir les champs "department" et "state" en chaînes de caractères pour la recherche
+      const departmentValue = employee.department.label.toLowerCase();
+      const stateValue = employee.state.label.toLowerCase();
+  
+      // Créer un tableau de toutes les valeurs à rechercher
+      const employeeData = [
+        ...Object.values(employee).map((value) =>
+          typeof value === 'string' ? value.toLowerCase() : ''
+        ),
+        departmentValue,
+        stateValue,
+      ];
+  
       return employeeData.some((data) => data.includes(term));
     });
   };
@@ -40,11 +50,11 @@ const Table = () => {
     setSearchTerm(event.target.value);
   };
   
-  
+  const customPaginationOptionsPerPage = [10, 25, 50, 100];
 
   const paginationComponentOptions = {
     rowsPerPageText: 'Show entries',
-    rangeSeparatorText: 'de',
+    rangeSeparatorText: 'of',
     selectAllRowsItem: false,
   };
 
@@ -60,6 +70,7 @@ const Table = () => {
         defaultSortFieldId={1}
         pagination
         paginationComponentOptions={paginationComponentOptions}
+        paginationRowsPerPageOptions={customPaginationOptionsPerPage} 
       />
     </div>
   );
