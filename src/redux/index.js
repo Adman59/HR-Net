@@ -16,5 +16,6 @@ export const mainStore = configureStore({
     reducer: {
         employees: employeesSlice.reducer
     },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware(), //Permet de retirer l'erreur non serializable de la console
     devTools: true,
 })
