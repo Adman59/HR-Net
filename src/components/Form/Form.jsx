@@ -71,14 +71,14 @@ const Form = () => {
         <form className='createEmployee' onSubmit={handleSubmit(onSubmit)} noValidate>
             
             <div className='form__field'>
-                <label htmlFor='firstName'>First Name</label>
-                <input type="text" name="firstName" {...register("firstname")} required />
+                <label htmlFor='firstname'>First Name</label>
+                <input type="text" name="firstName" id="firstname" {...register("firstname")} required />
                 <p className='error'>{errors.firstname?.message}</p>
             </div>
             
             <div className='form__field'>
-                <label htmlFor='lastName'>Last Name</label>
-                <input type="text" name="lastName" {...register("lastname")} required />
+                <label htmlFor='lastname'>Last Name</label>
+                <input type="text" name="lastName" id="lastname" {...register("lastname")} required />
                 <p className='error'>{errors.lastname?.message}</p>
             </div>
 
@@ -87,6 +87,7 @@ const Form = () => {
                     <label htmlFor='birthdate'>Date of Birth</label>
                     <Controller
                         name="birthdate"
+                        id="birthdate"
                         control={control}
                         render={({ field: { onChange, onBlur, value } }) => (
                             <DatePicker
@@ -113,6 +114,7 @@ const Form = () => {
                     <label htmlFor='startdate'>Start date</label>
                     <Controller
                         name="startdate"
+                        id="startdate"
                         control={control}
                         render={({ field: { onChange, onBlur, value } }) => (
                             <DatePicker
@@ -142,13 +144,13 @@ const Form = () => {
 
                 <div className='form__field'>
                     <label htmlFor='street'>Street</label>
-                    <input type="text" name="street" {...register("street")} required />
+                    <input type="text" name="street" id="street" {...register("street")} required />
                     <p className='error'>{errors.street?.message}</p>
                 </div>
 
                 <div className='form__field'>
                     <label htmlFor='city'>City</label>
-                    <input type="text" name="city" {...register("city")} required />
+                    <input type="text" name="city" id="city" {...register("city")} required />
                     <p className='error'>{errors.city?.message}</p>
                 </div>
 
@@ -158,6 +160,7 @@ const Form = () => {
                         className='select'
                         options={STATES}
                         name="state"
+                        inputId="state"
                         value={selectedState}
                         onChange={handleStateChange}
                     />
@@ -166,17 +169,18 @@ const Form = () => {
 
                 <div className='form__field'>
                     <label htmlFor='zipcode'>Zip Code</label>
-                    <input type="text" name="zipcode" {...register("zipcode")} required />
+                    <input type="text" name="zipcode" id="zipcode" {...register("zipcode")} required />
                     <p className='error'>{errors.zipcode?.message}</p>
                 </div>
             </fieldset>
 
             <div className='form__field'>
-                <label htmlFor='departement'>Departement</label>
+                <label htmlFor='department'>Departement</label>
                 <Select
                     className='select'
                     options={DEPARTEMENTS}
                     name="department"
+                    inputId="department"
                     value={selectedDepartment}
                     onChange={handleDepartmentChange}
                 />
