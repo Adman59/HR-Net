@@ -24,12 +24,8 @@ const Form = () => {
     const schema = yup.object().shape({
         firstname: yup.string().required("Please enter the employee firstname").min(2).max(30),
         lastname: yup.string().required("Please enter the employee lastname").min(2).max(30),
-        birthdate: yup.date().test("Birth Date", "Must be a valid date", (value) => {
-            return value;
-          }),
-        startdate: yup.date().test("Start Date", "Must be a valid date", (value) => {
-        return value;
-        }),
+        birthdate: yup.date(),
+        startdate: yup.date(),
         street: yup.string().required("Please insert the employee street adress"),
         city: yup.string().required("Please insert the employee city adress"),
         zipcode: yup.number().positive().integer().required("Please enter the employee ZIP code"),
@@ -43,8 +39,9 @@ const Form = () => {
         setSelectedState(selectedOption);
     };
     
+    
     const handleDepartmentChange = (selectedOption) => {
-    setSelectedDepartment(selectedOption);
+        setSelectedDepartment(selectedOption);
     };
 
     const closeModal = () => {
@@ -57,13 +54,14 @@ const Form = () => {
 
 
     const onSubmit = (data) => {
-        // Convert the startdate to a serializable format (ISO string)
-        const dataToSend = { ...data, startdate: data.startdate.toISOString(), birthdate: data.birthdate.toISOString() };
-        dataToSend.state = selectedState;
-        dataToSend.department = selectedDepartment;
+        data.state = selectedState;
+        data.department = selectedDepartment;
+        data.startdate = new Date(data.startdate).toLocaleDateString("fr");
+        data.birthdate = new Date(data.birthdate).toLocaleDateString("fr");
+        console.log(data);
         setModalIsActive(true);
         reset({ firstname: "", lastname: "", birthdate: "", startdate: "", department: "Sales", street: "", city: "", state: "Alabama", zipcode: "" });
-        dispatch({ type: 'employees/addEmployee', payload: dataToSend });
+        dispatch({ type: 'employees/addEmployee', payload: data });
     }
     
 
@@ -86,7 +84,7 @@ const Form = () => {
 
             <div className='datepicker__container'>
                 <div className='form__field'>
-                    <label htmlFor='dateOfBirth'>Date of Birth</label>
+                    <label htmlFor='birthdate'>Date of Birth</label>
                     <Controller
                         name="birthdate"
                         control={control}
@@ -100,6 +98,7 @@ const Form = () => {
                             placeholderText="Click to select a date"
                             onChange={(date) => {
                                 onChange(date);
+                                console.log(date);
                             }}
                             onBlur={onBlur}
                             selected={value}
@@ -111,7 +110,7 @@ const Form = () => {
                 </div>
 
                 <div className='form__field'>
-                    <label htmlFor='startDate'>Start date</label>
+                    <label htmlFor='startdate'>Start date</label>
                     <Controller
                         name="startdate"
                         control={control}
@@ -125,10 +124,11 @@ const Form = () => {
                             placeholderText="Click to select a date"
                             onChange={(date) => {
                                 onChange(date);
+                                console.log(date);
                             }}
                             onBlur={onBlur}
                             selected={value}
-                            yearDropdownItemNumber={new Date().getFullYear() - 2000}
+                            yearDropdownItemNumber={new Date().getFullYear() - 1900}
                             todayButton="Today"
                             />
                         )}
