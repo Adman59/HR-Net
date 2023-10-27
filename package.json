@@ -16,6 +16,7 @@
     "@redux-devtools/extension": "^3.2.5",
     "@reduxjs/toolkit": "^1.9.7",
     "adman-modal": "^0.1.7",
+    "core-js": "^3.33.1",
     "react": "^18.2.0",
     "react-data-table-component": "^7.5.4",
     "react-datepicker": "^4.20.0",

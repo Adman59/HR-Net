@@ -1,3 +1,4 @@
+
 # HR Net | Faites passer une librairie jQuery vers React
 
 Vous travaillez pour le département technologique d'une grande société financière, WealthHealth. 
@@ -5,6 +6,11 @@ Vous travaillez pour le département technologique d'une grande société financ
 Cette société utilise une application web interne, appelée HRnet, qui gère les dossiers des employés. L'application est ancienne et utilise jQuery côté front end, ce qui entraîne des bugs considérables et une augmentation des plaintes en interne. Votre équipe de développement s'efforce depuis un certain temps déjà de mettre à niveau l'application.
 
 
+## Demo
+
+Vous pouvez consulter le site ici : https://hr-net-adman.netlify.app/
+
+Lien vers le npm adman-modal : https://www.npmjs.com/package/adman-modal
 ## Badges
 
 [![MIT License](	https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://choosealicense.com/licenses/mit/) [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)]()[![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)]()[![Redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)]()[![NPM](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)]()
@@ -55,11 +61,3 @@ Start the server
 - Mettre en place son environnement Front-End
 - Produire de la documentation technique pour une application
 
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
